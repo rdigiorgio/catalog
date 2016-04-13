@@ -1,0 +1,5 @@
+name: Couchbase Community
+description: |
+  Document-Oriented NoSQL Database
+version: 4.0.0-rancher0
+category: Database

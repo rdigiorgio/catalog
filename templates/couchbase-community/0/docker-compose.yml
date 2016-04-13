@@ -1,0 +1,18 @@
+couchbase:
+  image: couchbase/server:community-4.0.0
+  net: host
+  volumes_from:
+   - couchbase-data
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: instore.digital.couchbase.enable=true
+    io.rancher.sidekicks: couchbase-data
+
+couchbase-data:
+  image: couchbase/server:community-4.0.0
+  net: none
+  entrypoint: /bin/true
+  volumes:
+   - /mnt/idos/couchbase:/opt/couchbase/var
+  labels:
+    io.rancher.container.start_once: 'true'

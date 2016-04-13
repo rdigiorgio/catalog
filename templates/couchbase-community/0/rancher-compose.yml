@@ -1,0 +1,4 @@
+.catalog:
+  name: "Couchbase Community"
+  version: "4.0.0-rancher0"
+  description: "Document-Oriented NoSQL Database"
