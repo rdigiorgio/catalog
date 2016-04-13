@@ -1,5 +1,6 @@
 elasticsearch:
   image: elasticsearch:1.7.3
+  net: "container:elasticsearch-conf"
   entrypoint: /opt/scripts/run.sh
   volumes_from:
    - elasticsearch-data
