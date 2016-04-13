@@ -1,0 +1,11 @@
+.catalog:
+  name: "Redis"
+  version: "3.0.7-rancher0"
+  description: "An open source (BSD licensed), in-memory data structure store, used as database, cache and message broker"
+  questions:
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.redis.enable=true"

@@ -1,0 +1,5 @@
+name: Redis
+description: |
+  An open source (BSD licensed), in-memory data structure store, used as database, cache and message broker
+version: 3.0.7-rancher0
+category: Database
