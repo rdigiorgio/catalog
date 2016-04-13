@@ -1,0 +1,19 @@
+postgres:
+  image: postgres:9.5.2
+  volumes_from:
+   - postgres-data
+  environment:
+   - POSTGRES_USER=${POSTGRES_USER}
+   - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  labels:
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.sidekicks: postgres-data
+
+postgres-data:
+  image: postgres:9.5.2
+  net: none
+  entrypoint: /bin/true
+  volumes:
+   - ${DATA_DIRECTORY}:/var/lib/postgresql/data
+  labels:
+    io.rancher.container.start_once: 'true'

@@ -1,0 +1,29 @@
+.catalog:
+  name: "PostgreSQL"
+  version: "9.5.2-rancher0"
+  description: "The world's most advanced open source database"
+  questions:
+   - variable: "DATA_DIRECTORY"
+     description: "PostgreSQL persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/postgres"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.postgres.enable=true"
+   - variable: "POSTGRES_USER"
+     description: "Default administrator username"
+     label: "Username"
+     required: true
+     type: "string"
+     default: "postgres"
+   - variable: "POSTGRES_PASSWORD"
+     description: "Default administrator password"
+     label: "Password"
+     required: true
+     type: "string"
+     default: "postgres"

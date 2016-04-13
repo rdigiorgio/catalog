@@ -1,0 +1,5 @@
+name: PostgreSQL
+description: |
+  The world's most advanced open source database
+version: 9.5.2-rancher0
+category: Database
