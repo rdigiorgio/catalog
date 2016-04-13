@@ -10,6 +10,7 @@ elasticsearch:
     io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
   environment:
    - ES_HEAP_SIZE=${ES_HEAP_SIZE}
+   - PLUGIN_TXT=/opt/confd/plugins.txt
 
 elasticsearch-conf:
   image: instoredigital/rancher-elasticsearch-conf:latest
