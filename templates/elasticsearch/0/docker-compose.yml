@@ -1,6 +1,6 @@
 elasticsearch:
   image: elasticsearch:1.7.3
-  entrypoint: DA_ENTRYPOINT_HERE_LAAAAAAAAAAAA
+  entrypoint: /opt/elasticsearch/run.sh
   volumes_from:
    - elasticsearch-data
    - elasticsearch-conf

@@ -27,12 +27,12 @@
       - MANUAL
    - variable: "ELASTICSEARCH_SERVICE"
      description: "Link to another Elasticsearch service (only necessary if JOIN_STRATEGY=SERVICE_LINK)"
-     label: "Elasticseach service"
+     label: "Elasticsearch service"
      required: false
      type: "service"
    - variable: "UNICAST_HOSTS"
      description: "Unicast hosts connection string (only necessary if JOIN_STRATEGY=SERVICE_MANUAL)"
-     label: "Elasticseach service"
+     label: "Elasticsearch hosts"
      required: false
      type: "string"
      default: "localhost:9300"
