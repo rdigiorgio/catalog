@@ -2,7 +2,7 @@
 
 Ran as global scale, this stack creates Kafka nodes on each host having the specified host labels.
 
-## Configuration
+### Configuration
 
 Each node is automatically configured to advertise its host hostname, which will be written into given Zookeeper path.
 The broker id of each instance is defined using a host label: _instore.digital.kafka.brokerid_
@@ -32,6 +32,6 @@ zookeeper.connection.timeout.ms=10000
 zookeeper.session.timeout.ms=10000
 ```
 
-## Networking
+### Networking
 
 Each container on each host runs with host's network. Thus, only one instance of Kafka can run on a given host.
