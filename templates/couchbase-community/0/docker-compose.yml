@@ -13,6 +13,6 @@ couchbase-data:
   net: none
   entrypoint: /bin/true
   volumes:
-   - /mnt/idos/couchbase:/opt/couchbase/var
+   - ${DATA_DIRECTORY}:/opt/couchbase/var
   labels:
     io.rancher.container.start_once: 'true'

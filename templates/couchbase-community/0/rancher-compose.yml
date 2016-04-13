@@ -2,3 +2,10 @@
   name: "Couchbase Community"
   version: "4.0.0-rancher0"
   description: "Document-Oriented NoSQL Database"
+  questions:
+   - variable: "DATA_DIRECTORY"
+     description: "Couchbase persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/couchbase"
