@@ -1,0 +1,5 @@
+name: Apache Kafka
+description: |
+  A high-throughput, distributed, publish-subscribe messaging system
+version: 2.9.2-0.8.2.1-rancher0
+category: Queue

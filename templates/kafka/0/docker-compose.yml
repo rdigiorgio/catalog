@@ -1,0 +1,23 @@
+kafka:
+  net: host
+  image: instoredigital/kafka:2.9.2-0.8.2.1
+  command: /usr/share/kafka/run/run.sh
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.sidekicks: kafka-data,kafka-conf
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+  volumes_from:
+   - kafka-data
+   - kafka-conf
+
+kafka-data:
+  image: instoredigital/kafka:2.9.2-0.8.2.1
+  command: /bin/true
+  labels:
+    io.rancher.container.start_once: 'true'
+  volumes:
+   - ${DATA_DIRECTORY}:/data
+
+kafka-conf:
+  image: instoredigital/rancher-kafka-conf:1.0.1

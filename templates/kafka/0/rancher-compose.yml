@@ -1,0 +1,27 @@
+.catalog:
+  name: "Apache Kafka"
+  version: "2.9.2-0.8.2.1-rancher0"
+  description: "A high-throughput, distributed, publish-subscribe messaging system"
+  questions:
+   - variable: "ZOOKEEPER_CONNECTION_STRING"
+     description: "Zookeeper connection string"
+     label: "zookeeper.connect"
+     required: true
+     type: "string"
+     default: "localhost:2181/kafka"
+   - variable: "DATA_DIRECTORY"
+     description: "Kafka persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/kafka"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.kafka.enable=true"
+
+kafka:
+  metadata:
+    zk_connect: "${ZOOKEEPER_CONNECTION_STRING}"
