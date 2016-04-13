@@ -1,0 +1,23 @@
+elasticsearch:
+  image: elasticsearch:1.7.3
+  entrypoint: DA_ENTRYPOINT_HERE_LAAAAAAAAAAAA
+  volumes_from:
+   - elasticsearch-data
+   - elasticsearch-conf
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.sidekicks: elasticsearch-conf,elasticsearch-data
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+  environment:
+   - ES_HEAP_SIZE=${ES_HEAP_SIZE}
+
+elasticsearch-conf:
+  image: instoredigital/rancher-elasticsearch-conf:1.0.1
+
+elasticsearch-data:
+  image: elasticsearch:1.7.3
+  entrypoint: /bin/true
+  volumes:
+   - ${DATA_DIRECTORY}:/usr/share/elasticsearch/data
+  labels:
+    io.rancher.container.start_once: true

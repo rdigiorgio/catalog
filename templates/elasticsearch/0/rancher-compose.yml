@@ -1,0 +1,63 @@
+.catalog:
+  name: "Elasticsearch"
+  version: "1.7.3-rancher0"
+  description: "Search & Analyze Data in Real Time"
+  questions:
+   - variable: "CLUSTER_NAME"
+     description: "Elasticsearch cluster name"
+     label: "Cluser name"
+     required: true
+     type: "string"
+     default: "elasticsearch"
+   - variable: "ES_HEAP_SIZE"
+     description: "JVM heap size allocated to Elasticsearch process"
+     label: "Heap size"
+     required: true
+     type: "string"
+     default: "1g"
+   - variable: "JOIN_STRATEGY"
+     description: |
+       The strategy to adopt in order for each node to join the cluster.
+        - SELF_CONTAINERS: Each node will try to contact all containers of the this service to join the cluster
+        - SERVICE_LINK: Each node will join the cluster using an external service link (See ELASTICSEARCH_SERVICE)
+        - MANUAL: Each node will join the cluster using a unicast.hosts string (See UNICAST_HOSTS)
+     label: "Cluster join strategy"
+     required: true
+     type: "enum"
+     options:
+      - SELF_CONTAINERS
+      - SERVICE_LINK
+      - MANUAL
+   - variable: "ELASTICSEARCH_SERVICE"
+     description: "Link to another Elasticsearch service (only necessary if JOIN_STRATEGY=SERVICE_LINK)"
+     label: "Elasticseach service"
+     required: false
+     type: "service"
+   - variable: "UNICAST_HOSTS"
+     description: "Unicast hosts connection string (only necessary if JOIN_STRATEGY=SERVICE_MANUAL)"
+     label: "Elasticseach service"
+     required: false
+     type: "string"
+     default: "localhost:9300"
+   - variable: "DATA_DIRECTORY"
+     description: "Elasticsearch persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/elasticsearch"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.elasticsearch.enable=true"
+
+elasticsearch:
+  metadata:
+      conf:
+        join.strategy: "${JOIN_STRATEGY}"
+        elasticsearch.service: "${ELASTICSEARCH_SERVICE}"
+        unicast.hosts: "${UNICAST_HOSTS}"
+      yml:
+        cluster.name: "${CLUSTER_NAME}"
+        node.name: "$${HOSTNAME}"
