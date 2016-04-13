@@ -17,10 +17,7 @@
      default: "1g"
    - variable: "JOIN_STRATEGY"
      description: |
-       The strategy to adopt in order for each node to join the cluster.
-        - SELF_CONTAINERS: Each node will try to contact all containers of the this service to join the cluster
-        - SERVICE_LINK: Each node will join the cluster using an external service link (See ELASTICSEARCH_SERVICE)
-        - MANUAL: Each node will join the cluster using a unicast.hosts string (See UNICAST_HOSTS)
+       The strategy to adopt in order for each node to join the cluster
      label: "Cluster join strategy"
      required: true
      type: "enum"

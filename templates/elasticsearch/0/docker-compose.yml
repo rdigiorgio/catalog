@@ -12,7 +12,7 @@ elasticsearch:
    - ES_HEAP_SIZE=${ES_HEAP_SIZE}
 
 elasticsearch-conf:
-  image: instoredigital/rancher-elasticsearch-conf:1.0.1
+  image: instoredigital/rancher-elasticsearch-conf:latest
 
 elasticsearch-data:
   image: elasticsearch:1.7.3
