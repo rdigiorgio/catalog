@@ -9,3 +9,9 @@
      required: true
      type: "string"
      default: "/mnt/idos/couchbase"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.couchbase.enable=true"
