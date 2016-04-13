@@ -6,7 +6,7 @@ Ran as global scale, this stack creates Couchbase nodes on each host having the 
 
 When running one or multiple Couchbase node(s), you must access the web interface to initialize the cluster, and link node to each others manually.
 
-## Data persistence
+## Data persistence
 
 Persistent data will be stored in data directory, which is mapped to specified host directory.
 
