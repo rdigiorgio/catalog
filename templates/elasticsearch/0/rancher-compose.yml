@@ -26,8 +26,8 @@
       - HOST_NAME
    - variable: "JOIN_STRATEGY"
      description: |
-       The strategy to adopt in order for each node to join the cluster
-     label: "Cluster join strategy"
+       The strategy to adopt in order to generate unicast hosts configuration
+     label: "Cluster communication strategy"
      required: true
      type: "enum"
      options:
@@ -49,11 +49,6 @@
      default: |
        node.data: true
        node.master: true
-   - variable: "ELASTICSEARCH_SERVICE"
-     description: "Link to another Elasticsearch service (only necessary if JOIN_STRATEGY=SERVICE_LINK)"
-     label: "Elasticsearch service"
-     required: false
-     type: "service"
    - variable: "UNICAST_HOSTS"
      description: "Unicast hosts connection string (only necessary if JOIN_STRATEGY=SERVICE_MANUAL)"
      label: "Elasticsearch hosts"
