@@ -1,7 +1,7 @@
 kibana-proxy:
   image: instoredigital/rancher-nginx:1.9.4
   volumes_from:
-    - nginx-proxy-conf
+    - kibana-proxy-conf
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}

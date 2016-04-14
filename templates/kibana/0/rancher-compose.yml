@@ -12,7 +12,7 @@
    - variable: "USERS"
      description: "Basic authentication users: default user is foo/bar"
      label: "Users"
-     required: true
+     required: false
      type: "multiline"
      default: |
        foo:$$apr1$$p3j6C01g$$A9jogzlJvkHrEnNISRf2g.
