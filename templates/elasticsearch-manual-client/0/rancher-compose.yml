@@ -36,5 +36,5 @@ elasticsearch:
         unicast.hosts: "${UNICAST_HOSTS}"
       yml:
         cluster.name: "${CLUSTER_NAME}"
-        node.master: "true"
-        node.data: "true"
+        node.master: "false"
+        node.data: "false"
