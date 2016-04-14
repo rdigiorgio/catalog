@@ -1,20 +1,20 @@
 elasticsearch:
-  image: elasticsearch:1.7.3
-  net: "container:elasticsearch-conf"
-  entrypoint: /opt/scripts/run.sh
-  volumes_from:
-   - elasticsearch-data
-   - elasticsearch-conf
+  image: instoredigital/rancher-elasticsearch-conf:latest
   labels:
     io.rancher.scheduler.global: 'true'
-    io.rancher.sidekicks: elasticsearch-conf,elasticsearch-data
     io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.sidekicks: elasticsearch-process,elasticsearch-data
+
+elasticsearch-process:
+  image: elasticsearch:1.7.3
+  net: "container:elasticsearch"
+  entrypoint: /opt/scripts/run.sh
+  volumes_from:
+   - elasticsearch
+   - elasticsearch-data
   environment:
    - ES_HEAP_SIZE=${ES_HEAP_SIZE}
    - PLUGIN_TXT=/opt/confd/plugins.txt
-
-elasticsearch-conf:
-  image: instoredigital/rancher-elasticsearch-conf:latest
 
 elasticsearch-data:
   image: elasticsearch:1.7.3
