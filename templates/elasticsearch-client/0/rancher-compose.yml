@@ -1,5 +1,5 @@
 .catalog:
-  name: "Elasticsearch (Manual client)"
+  name: "Elasticsearch (Client)"
   version: "1.7.3-rancher0"
   description: "Search & Analyze Data in Real Time"
   questions:
@@ -15,12 +15,11 @@
      required: true
      type: "string"
      default: "1g"
-   - variable: "UNICAST_HOSTS"
-     description: "Unicast hosts connection string"
-     label: "Elasticsearch hosts"
-     required: false
-     type: "string"
-     default: "localhost:9300"
+   - variable: "ELASTICSEARCH_SERVICE"
+     description: "Elasticsearch cluster service to join"
+     label: "Elasticsearch service"
+     required: true
+     type: "service"
    - variable: "INCLUDE_LABELS"
      description: "Host matching labels scheduling rule"
      label: "Host labels"
@@ -32,9 +31,9 @@ elasticsearch:
   metadata:
       conf:
         node.naming.strategy: "AUTO"
-        join.strategy: "MANUAL"
-        unicast.hosts: "${UNICAST_HOSTS}"
+        join.strategy: "SERVICE_LINK"
+        elasticsearch.service: "${ELASTICSEARCH_SERVICE}"
       yml:
         cluster.name: "${CLUSTER_NAME}"
-        node.master: "false"
         node.data: "false"
+        node.master: "false"
