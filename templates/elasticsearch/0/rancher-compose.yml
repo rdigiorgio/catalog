@@ -41,6 +41,14 @@
      type: "multiline"
      default: |
        elasticsearch/marvel/latest
+   - variable: "YML_CONFIG"
+     description: YML additional configuration
+     label: "Configuration"
+     required: false
+     type: "multiline"
+     default: |
+       node.data: true
+       node.master: true
    - variable: "ELASTICSEARCH_SERVICE"
      description: "Link to another Elasticsearch service (only necessary if JOIN_STRATEGY=SERVICE_LINK)"
      label: "Elasticsearch service"
@@ -74,5 +82,6 @@ elasticsearch:
         unicast.hosts: "${UNICAST_HOSTS}"
       yml:
         cluster.name: "${CLUSTER_NAME}"
+        ${YML_CONFIG}
       plugins: |
         ${PLUGINS}
