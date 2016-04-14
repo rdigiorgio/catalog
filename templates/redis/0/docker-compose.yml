@@ -1,5 +1,5 @@
 redis:
   image: redis:3.0.7
   labels:
-      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-      io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}

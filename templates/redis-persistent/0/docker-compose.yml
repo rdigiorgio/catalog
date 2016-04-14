@@ -1,0 +1,15 @@
+redis:
+  image: redis:3.0.7
+  command: redis-server --appendonly yes
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.sidekicks: redis-data
+
+redis-data:
+  image: redis:3.0.7
+  entrypoint: /bin/true
+  volumes:
+   - ${DATA_DIRECTORY}/data
+  labels:
+    io.rancher.container.start_once: true

@@ -1,0 +1,17 @@
+.catalog:
+  name: "Redis (Persistent storage)"
+  version: "3.0.7-rancher0"
+  description: "An open source (BSD licensed), in-memory data structure store, used as database, cache and message broker"
+  questions:
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.redis.enable=true"
+   - variable: "DATA_DIRECTORY"
+     description: "Redis persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/redis"
