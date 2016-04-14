@@ -1,16 +1,16 @@
-nginx-proxy:
+kibana-proxy:
   image: instoredigital/rancher-nginx:1.9.4
   volumes_from:
     - nginx-proxy-conf
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
-    io.rancher.sidekicks: nginx-proxy-conf,kibana
+    io.rancher.sidekicks: kibana-proxy-conf,kibana
   external_links:
     - ${ELASTICSEARCH_SERVICE}:elasticsearch
 
-nginx-proxy-conf:
-  image: instoredigital/rancher-nginx-conf
+kibana-proxy-conf:
+  image: instoredigital/rancher-nginx-conf:1.0.0
 
 kibana:
   image: kibana:4.1.1
