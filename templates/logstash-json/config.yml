@@ -1,0 +1,5 @@
+name: Logstash (JSON lines)
+description: |
+  Collect, Enrich & Transport Data
+version: 1.5.3-1-rancher0
+category: Log
