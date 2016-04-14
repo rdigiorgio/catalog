@@ -3,7 +3,7 @@ elasticsearch:
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
-    io.rancher.sidekicks: elasticsearch-process,elasticsearch-data
+    io.rancher.sidekicks: elasticsearch-process
 
 elasticsearch-process:
   image: elasticsearch:1.7.3
