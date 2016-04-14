@@ -1,5 +1,7 @@
 elasticsearch:
   image: instoredigital/rancher-elasticsearch-conf:latest
+  external_links:
+   - ${ELASTICSEARCH_SERVICE}:es
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
