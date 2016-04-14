@@ -1,5 +1,5 @@
 .catalog:
-  name: "Elasticsearch (Service linked client)"
+  name: "Elasticsearch (Service client)"
   version: "1.7.3-rancher0"
   description: "Search & Analyze Data in Real Time"
   questions:

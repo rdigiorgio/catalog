@@ -1,4 +1,4 @@
-name: Elasticsearch (Service linked client)
+name: Elasticsearch (Service client)
 description: |
   Search & Analyze Data in Real Time
 version: 1.7.3-rancher0
