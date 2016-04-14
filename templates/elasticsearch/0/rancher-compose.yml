@@ -15,6 +15,15 @@
      required: true
      type: "string"
      default: "1g"
+   - variable: "NODE_NAMING_STRATEGY"
+     description: |
+       The strategy to adopt in order to determine each node name
+     label: "Node naming strategy"
+     required: true
+     type: "enum"
+     options:
+      - AUTO
+      - HOST_NAME
    - variable: "JOIN_STRATEGY"
      description: |
        The strategy to adopt in order for each node to join the cluster
@@ -52,11 +61,11 @@
 elasticsearch:
   metadata:
       conf:
+        node.naming.strategy: "${NODE_NAMING_STRATEGY}"
         join.strategy: "${JOIN_STRATEGY}"
         elasticsearch.service: "${ELASTICSEARCH_SERVICE}"
         unicast.hosts: "${UNICAST_HOSTS}"
       yml:
         cluster.name: "${CLUSTER_NAME}"
-        node.name: "$${HOSTNAME}"
       plugins:
-        elasticsearch/marvel/latest
+       - elasticsearch/marvel/latest
