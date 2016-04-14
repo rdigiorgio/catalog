@@ -1,4 +1,4 @@
-name: Elasticsearch - Master/Data (Discovery: service containers)
+name: "Elasticsearch - Master/Data (Discovery: service containers)"
 description: |
   Search & Analyze Data in Real Time
 version: 1.7.3-rancher0
