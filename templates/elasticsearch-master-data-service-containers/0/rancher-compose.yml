@@ -31,14 +31,6 @@
      type: "multiline"
      default: |
        elasticsearch/marvel/latest
-   - variable: "YML_CONFIG"
-     description: YML additional configuration
-     label: "Configuration"
-     required: false
-     type: "multiline"
-     default: |
-       index :
-         refresh_interval: 5s
    - variable: "DATA_DIRECTORY"
      description: "Elasticsearch persistent data directory"
      label: "Data directory"
@@ -61,7 +53,5 @@ elasticsearch:
         cluster.name: "${CLUSTER_NAME}"
         node.data: "true"
         node.master: "true"
-      custom.yml: |
-        ${YML_CONFIG}
       plugins: |
         ${PLUGINS}
