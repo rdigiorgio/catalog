@@ -10,7 +10,7 @@ kibana-proxy:
     - ${ELASTICSEARCH_SERVICE}:elasticsearch
 
 kibana-proxy-conf:
-  image: instoredigital/rancher-nginx-conf:1.0.0
+  image: instoredigital/rancher-nginx-conf:1.0.1
 
 kibana:
   image: kibana:4.1.1
