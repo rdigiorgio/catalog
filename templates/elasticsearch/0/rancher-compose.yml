@@ -82,6 +82,7 @@ elasticsearch:
         unicast.hosts: "${UNICAST_HOSTS}"
       yml:
         cluster.name: "${CLUSTER_NAME}"
+      custom.yml: |
         ${YML_CONFIG}
       plugins: |
         ${PLUGINS}
