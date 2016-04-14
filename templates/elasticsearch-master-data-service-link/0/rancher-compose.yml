@@ -1,0 +1,62 @@
+.catalog:
+  name: "Elasticsearch - Master/Data (Discovery: service link)"
+  version: "1.7.3-rancher0"
+  description: "Search & Analyze Data in Real Time"
+  questions:
+   - variable: "CLUSTER_NAME"
+     description: "Elasticsearch cluster name"
+     label: "Cluster name"
+     required: true
+     type: "string"
+     default: "elasticsearch"
+   - variable: "ES_HEAP_SIZE"
+     description: "JVM heap size allocated to Elasticsearch process"
+     label: "Heap size"
+     required: true
+     type: "string"
+     default: "1g"
+   - variable: "ELASTICSEARCH_SERVICE"
+     description: "Link to another Elasticsearch service"
+     label: "Elasticsearch service"
+     required: false
+     type: "service"
+   - variable: "NODE_NAMING_STRATEGY"
+     description: |
+       The strategy to adopt in order to determine each node name
+     label: "Node naming strategy"
+     required: true
+     type: "enum"
+     options:
+      - AUTO
+      - HOST_NAME
+   - variable: "PLUGINS"
+     description: Plugins to install at startup
+     label: "Plugins"
+     required: false
+     type: "multiline"
+     default: |
+       elasticsearch/marvel/latest
+   - variable: "DATA_DIRECTORY"
+     description: "Elasticsearch persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/elasticsearch"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.elasticsearch.enable=true"
+
+elasticsearch:
+  metadata:
+      conf:
+        node.naming.strategy: "${NODE_NAMING_STRATEGY}"
+        join.strategy: SELF_CONTAINERS
+      yml:
+        cluster.name: "${CLUSTER_NAME}"
+        node.data: "true"
+        node.master: "true"
+      plugins: |
+        ${PLUGINS}
