@@ -1,0 +1,5 @@
+name: Elasticsearch (Master)
+description: |
+  Search & Analyze Data in Real Time
+version: 1.7.3-rancher0
+category: Database
