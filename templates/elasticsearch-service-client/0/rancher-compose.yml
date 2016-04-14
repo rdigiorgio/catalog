@@ -1,0 +1,39 @@
+.catalog:
+  name: "Elasticsearch (Service linked client)"
+  version: "1.7.3-rancher0"
+  description: "Search & Analyze Data in Real Time"
+  questions:
+   - variable: "CLUSTER_NAME"
+     description: "Elasticsearch cluster name"
+     label: "Cluser name"
+     required: true
+     type: "string"
+     default: "elasticsearch"
+   - variable: "ES_HEAP_SIZE"
+     description: "JVM heap size allocated to Elasticsearch process"
+     label: "Heap size"
+     required: true
+     type: "string"
+     default: "1g"
+   - variable: "ELASTICSEARCH_SERVICE"
+     description: "Elasticsearch cluster service to join"
+     label: "Elasticsearch service"
+     required: true
+     type: "service"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.elasticsearch.enable=true"
+
+elasticsearch:
+  metadata:
+      conf:
+        node.naming.strategy: "AUTO"
+        join.strategy: "SERVICE_LINK"
+        elasticsearch.service: "${ELASTICSEARCH_SERVICE}"
+      yml:
+        cluster.name: "${CLUSTER_NAME}"
+        node.data: "false"
+        node.master: "false"
