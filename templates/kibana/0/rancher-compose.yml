@@ -1,0 +1,32 @@
+.catalog:
+  name: "Kibana"
+  version: "4.1.1-rancher0"
+  description: "Explore & Visualize Your Data"
+  questions:
+   - variable: "ELASTICSEARCH_SERVICE"
+     description: "Elasticsearch service to request"
+     label: "Elasticsearch service"
+     required: true
+     type: "service"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.kibana.enable=true"
+   - variable: "USERS"
+     description: "Basic authentication users: default user is foo/bar"
+     label: "Users"
+     required: true
+     type: "multiline"
+     default: |
+       - { "username": "foo", "password": "$$apr1$$p3j6C01g$$A9jogzlJvkHrEnNISRf2g." }
+
+nginx-proxy:
+  metadata:
+    nginx:
+      conf:
+        servername: "kibana"
+        upstream_port: 5601
+      users:
+       ${USERS}

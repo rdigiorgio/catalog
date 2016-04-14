@@ -1,0 +1,5 @@
+name: Kibana
+description: |
+  Explore & Visualize Your Data
+version: 4.1.1-rancher0
+category: UI

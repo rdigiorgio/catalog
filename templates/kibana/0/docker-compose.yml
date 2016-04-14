@@ -1,0 +1,19 @@
+nginx-proxy:
+  image: instoredigital/rancher-nginx:1.9.4
+  volumes_from:
+    - nginx-proxy-conf
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.sidekicks: nginx-proxy-conf,kibana
+  external_links:
+    - ${ELASTICSEARCH_SERVICE}:elasticsearch
+
+nginx-proxy-conf:
+  image: instoredigital/rancher-nginx-conf
+
+kibana:
+  image: kibana:4.1.1
+  net: "container:nginx-proxy"
+  environment:
+    ELASTICSEARCH_URL: "http://elasticsearch:9200"
