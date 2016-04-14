@@ -15,7 +15,7 @@
      required: false
      type: "multiline"
      default: |
-       foo:$$apr1$$p3j6C01g$$A9jogzlJvkHrEnNISRf2g.
+       foo:$apr1$p3j6C01g$A9jogzlJvkHrEnNISRf2g.
    - variable: "ELASTICSEARCH_SERVICE"
      description: "Elasticsearch service to request"
      label: "Elasticsearch service"
