@@ -12,10 +12,11 @@ logstash-json-collector:
     io.rancher.sidekicks: logstash-json-collector-conf
 
 logstash-json-collector-conf:
-  image: instoredigital/rancher-logstash-conf:1.0.4
+  image: instoredigital/rancher-logstash-conf:1.0.5
 
 logstash-json-indexer:
   image: logstash:1.5.3-1
+  entrypoint: /opt/scripts/run.sh
   command: -f /etc/logstash
   volumes_from:
    - logstash-json-indexer-conf
@@ -28,4 +29,4 @@ logstash-json-indexer:
     io.rancher.sidekicks: logstash-json-indexer-conf
 
 logstash-json-indexer-conf:
-  image: instoredigital/rancher-logstash-conf:1.0.4
+  image: instoredigital/rancher-logstash-conf:1.0.5

@@ -46,35 +46,31 @@
 
 logstash-json-collector:
   metadata:
-    logstash:
-      inputs: |
-        tcp {
-          port => 5000
-          codec => "json_lines"
-        }
-      outputs: |
-        redis {
-          host => "redis"
-          port => "6379"
-          data_type => "list"
-          key => "${REDIS_KEY}"
-        }
+    inputs: |
+      tcp {
+        port => 5000
+        codec => "json_lines"
+      }
+    outputs: |
+      redis {
+        host => "redis"
+        port => "6379"
+        data_type => "list"
+        key => "${REDIS_KEY}"
+      }
 
 logstash-json-indexer:
   metadata:
-    logstash:
-      inputs: |
-        redis {
-          host => "redis"
-          port => "6379"
-          data_type => "list"
-          key => "${REDIS_KEY}"
-        }
-      filters: |
-
-      outputs: |
-        elasticsearch {
-          host => "elasticsearch"
-          protocol => "http"
-          index => "${ELASTICSEARCH_INDEX}"
-        }
+    inputs: |
+      redis {
+        host => "redis"
+        port => "6379"
+        data_type => "list"
+        key => "${REDIS_KEY}"
+      }
+    outputs: |
+      elasticsearch {
+        host => "elasticsearch"
+        protocol => "http"
+        index => "${ELASTICSEARCH_INDEX}"
+      }
