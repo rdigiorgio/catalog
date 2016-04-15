@@ -1,5 +1,6 @@
 logstash-topbeat-collector:
   image: logstash:1.5.3-1
+  command: -f /etc/logstash
   volumes_from:
    - logstash-topbeat-collector-conf
   external_links:
@@ -12,10 +13,11 @@ logstash-topbeat-collector:
     io.rancher.sidekicks: logstash-topbeat-collector-conf
 
 logstash-topbeat-collector-conf:
-  image: instoredigital/rancher-logstash-conf:1.0.2
+  image: instoredigital/rancher-logstash-conf:1.0.3
 
 logstash-topbeat-indexer:
   image: logstash:1.5.3-1
+  command: -f /etc/logstash
   volumes_from:
    - logstash-topbeat-indexer-conf
   external_links:
@@ -29,5 +31,5 @@ logstash-topbeat-indexer:
     io.rancher.sidekicks: logstash-topbeat-indexer-conf
 
 logstash-topbeat-indexer-conf:
-  image: instoredigital/rancher-logstash-conf:1.0.2
+  image: instoredigital/rancher-logstash-conf:1.0.3
 

@@ -25,6 +25,12 @@
      required: true
      type: "string"
      default: "logstash"
+   - variable: "RUN_ARGUMENTS"
+     description: "Run arguments passed to logstash binary"
+     label: "Command"
+     required: true
+     type: "string"
+     default: "-f /etc/logstash"
    - variable: "COLLECTOR_INCLUDE_LABELS"
      description: "Host matching labels scheduling rule for collector nodes"
      label: "Collector host labels"
