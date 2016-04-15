@@ -1,5 +1,5 @@
 logstash-topbeat-collector:
-  image: logstash:1.5.3-1
+  image: logstash:1.5.6-1
   entrypoint: /opt/scripts/run.sh
   command: -f /etc/logstash
   volumes_from:
@@ -17,7 +17,7 @@ logstash-topbeat-collector-conf:
   image: instoredigital/rancher-logstash-conf:1.0.5
 
 logstash-topbeat-indexer:
-  image: logstash:1.5.3-1
+  image: logstash:1.5.6-1
   entrypoint: /opt/scripts/run.sh
   command: -f /etc/logstash
   volumes_from:
