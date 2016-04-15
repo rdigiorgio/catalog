@@ -1,0 +1,31 @@
+.catalog:
+  name: "Topbeat"
+  version: "1.2.0-rancher0"
+  description: "Gather Infrastructure Metrics"
+  questions:
+   - variable: "ZOOKEEPER_CONNECTION_STRING"
+     description: "Zookeeper connection string"
+     label: "zookeeper.connect"
+     required: true
+     type: "string"
+     default: "localhost:2181/kafka"
+   - variable: "DATA_DIRECTORY"
+     description: "Kafka persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/kafka"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.kafka.enable=true"
+
+topbeat:
+  metadata:
+    topbeat:
+      input.procs: '["^$$"]'
+      output.file.enabled: true
+      output.logstash.enabled: true
+      output.logstash.hosts: '["logstash:4561"]'

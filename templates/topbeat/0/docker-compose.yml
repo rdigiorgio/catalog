@@ -1,0 +1,15 @@
+topbeat:
+  privileged: true
+  image: instoredigital/topbeat:1.2.0
+  command: -c /opt/topbeat/config/topbeat.yml -e -v
+  external_links:
+   - ${LOGSTASH_TOPBEAT_COLLECTOR}:logstash
+  volumes_from:
+   - topbeat-conf
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.sidekicks: topbeat-conf
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+
+topbeat-conf:
+  image: instoredigital/rancher-topbeat-conf:1.0.4
