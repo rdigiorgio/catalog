@@ -47,7 +47,7 @@
 logstash-topbeat-collector:
   metadata:
     plugins: |
-      ${PLUGINS}
+      logstash-input-beats
     inputs: |
       beats {
         port => 5000
@@ -63,7 +63,7 @@ logstash-topbeat-collector:
 logstash-topbeat-indexer:
   metadata:
     plugins: |
-      ${PLUGINS}
+      logstash-input-beats
     inputs: |
       redis {
         host => "redis"
