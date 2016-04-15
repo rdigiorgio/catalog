@@ -1,0 +1,5 @@
+name: Sonatype Nexus
+description: |
+  The world's best way to organize, store, and distribute software components
+version: 2.12.1-01-rancher0
+category: Repository

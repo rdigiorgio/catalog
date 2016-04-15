@@ -1,0 +1,17 @@
+.catalog:
+  name: "Sonatype Nexus"
+  version: "2.12.1-01-rancher0"
+  description: "The world's best way to organize, store, and distribute software components"
+  questions:
+   - variable: "DATA_DIRECTORY"
+     description: "Nexus persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/nexus"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.nexus.enable=true"

@@ -1,0 +1,15 @@
+nexus:
+  image: sonatype/nexus:2.12.1-01
+  volumes_from:
+   - nexus-work
+  labels:
+    io.rancher.sidekicks: nexus-work
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+
+nexus-work:
+  image: sonatype/nexus:2.12.1-01
+  entrypoint: /bin/true
+  volumes:
+   - ${DATA_DIRECTORY}:/sonatype-work
+  labels:
+    io.rancher.container.start_once: true
