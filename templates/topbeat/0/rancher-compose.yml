@@ -3,18 +3,17 @@
   version: "1.2.0-rancher0"
   description: "Gather Infrastructure Metrics"
   questions:
-   - variable: "ZOOKEEPER_CONNECTION_STRING"
-     description: "Zookeeper connection string"
-     label: "zookeeper.connect"
+   - variable: "RUN_ARGUMENTS"
+     description: "Run arguments passed to topbeat binary"
+     label: "Command"
      required: true
      type: "string"
-     default: "localhost:2181/kafka"
-   - variable: "DATA_DIRECTORY"
-     description: "Kafka persistent data directory"
-     label: "Data directory"
+     default: "-c /opt/topbeat/config/topbeat.yml -e"
+   - variable: "LOGSTASH_TOPBEAT_COLLECTOR"
+     description: "Logstash collector service to send metrics to"
+     label: "Logstash service"
      required: true
-     type: "string"
-     default: "/mnt/idos/kafka"
+     type: "service"
    - variable: "INCLUDE_LABELS"
      description: "Host matching labels scheduling rule"
      label: "Host labels"
@@ -25,7 +24,7 @@
 topbeat:
   metadata:
     topbeat:
-      input.procs: '["^$$"]'
+      input.procs: '[".*"]'
       output.file.enabled: true
       output.logstash.enabled: true
-      output.logstash.hosts: '["logstash:4561"]'
+      output.logstash.hosts: '["logstash:5000"]'

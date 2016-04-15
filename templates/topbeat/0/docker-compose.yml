@@ -1,7 +1,7 @@
 topbeat:
   privileged: true
   image: instoredigital/topbeat:1.2.0
-  command: -c /opt/topbeat/config/topbeat.yml -e -v
+  command: ${RUN_ARGUMENTS}
   external_links:
    - ${LOGSTASH_TOPBEAT_COLLECTOR}:logstash
   volumes_from:
