@@ -1,0 +1,33 @@
+logstash-topbeat-collector:
+  image: logstash:1.5.3-1
+  volumes_from:
+   - logstash-topbeat-collector-conf
+  external_links:
+   - ${REDIS_SERVICE}:redis
+  environment:
+   - PLUGIN_TXT=/opt/confd/plugins.txt
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${COLLECTOR_INCLUDE_LABELS}
+    io.rancher.sidekicks: logstash-topbeat-collector-conf
+
+logstash-topbeat-collector-conf:
+  image: instoredigital/rancher-logstash-conf:1.0.2
+
+logstash-topbeat-indexer:
+  image: logstash:1.5.3-1
+  volumes_from:
+   - logstash-topbeat-indexer-conf
+  external_links:
+   - ${REDIS_SERVICE}:redis
+   - ${ELASTICSEARCH_SERVICE}:elasticsearch
+  environment:
+   - PLUGIN_TXT=/opt/confd/plugins.txt
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${INDEXER_INCLUDE_LABELS}
+    io.rancher.sidekicks: logstash-topbeat-indexer-conf
+
+logstash-topbeat-indexer-conf:
+  image: instoredigital/rancher-logstash-conf:1.0.2
+

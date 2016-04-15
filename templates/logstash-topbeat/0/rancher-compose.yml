@@ -1,0 +1,76 @@
+.catalog:
+  name: "Logstash (Beats)"
+  version: "1.5.3-1-rancher0"
+  description: "Collect, Enrich & Transport Data"
+  questions:
+   - variable: "ELASTICSEARCH_SERVICE"
+     description: "Elasticsearch service to index events into"
+     label: "Elasticsearch service"
+     required: true
+     type: "service"
+   - variable: "ELASTICSEARCH_INDEX"
+     description: "Elasticsearch index to write events to"
+     label: "Elasticsearch index"
+     required: true
+     type: "string"
+     default: "topbeat-%{+YYYY.MM.dd}"
+   - variable: "REDIS_SERVICE"
+     description: "Redis service to use as a buffering queue"
+     label: "Redis service"
+     required: true
+     type: "service"
+   - variable: "REDIS_KEY"
+     description: "Redis key to insert documents into"
+     label: "Redis key"
+     required: true
+     type: "string"
+     default: "logstash"
+   - variable: "COLLECTOR_INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule for collector nodes"
+     label: "Collector host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.logstash.collector.enable=true"
+   - variable: "INDEXER_INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule for indexer nodes"
+     label: "Indexer host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.logstash.indexer.enable=true"
+
+logstash-beats-collector:
+  metadata:
+    logstash:
+      inputs: |
+        beats {
+          port => 5000
+        }
+      filters: |
+
+      outputs: |
+        redis {
+          host => "redis"
+          port => "6379"
+          data_type => "list"
+          key => "topbeat"
+        }
+
+logstash-beats-indexer:
+  metadata:
+    logstash:
+      inputs: |
+        redis {
+          host => "redis"
+          port => "6379"
+          data_type => "list"
+          key => "topbeat"
+        }
+      filters: |
+
+      outputs: |
+        elasticsearch {
+          host => "elasticsearch"
+          protocol => "http"
+          index => "${ELASTICSEARCH_INDEX}"
+          manage_template => false
+        }
