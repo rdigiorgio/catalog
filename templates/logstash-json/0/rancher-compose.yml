@@ -38,7 +38,7 @@
      type: "string"
      default: "instore.digital.logstash.indexer.enable=true"
 
-logstash-collector:
+logstash-json-collector:
   metadata:
     logstash:
       inputs: |
@@ -54,7 +54,7 @@ logstash-collector:
           key => "${REDIS_KEY}"
         }
 
-logstash-indexer:
+logstash-json-indexer:
   metadata:
     logstash:
       inputs: |

@@ -1,31 +1,31 @@
-logstash-collector:
+logstash-json-collector:
   image: logstash:1.5.3-1
   command: logstash -f /etc/logstash
   volumes_from:
-   - logstash-collector-conf
+   - logstash-json-collector-conf
   external_links:
    - ${REDIS_SERVICE}:redis
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.scheduler.affinity:host_label: ${COLLECTOR_INCLUDE_LABELS}
-    io.rancher.sidekicks: logstash-collector-conf
+    io.rancher.sidekicks: logstash-json-collector-conf
 
-logstash-collector-conf:
+logstash-json-collector-conf:
   image: instoredigital/rancher-logstash-conf:1.0.0
 
-logstash-indexer:
+logstash-json-indexer:
   image: logstash:1.5.3-1
   command: logstash -f /etc/logstash
   volumes_from:
-   - logstash-indexer-conf
+   - logstash-json-indexer-conf
   external_links:
    - ${REDIS_SERVICE}:redis
    - ${ELASTICSEARCH_SERVICE}:elasticsearch
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.scheduler.affinity:host_label: ${INDEXER_INCLUDE_LABELS}
-    io.rancher.sidekicks: logstash-indexer-conf
+    io.rancher.sidekicks: logstash-json-indexer-conf
 
-logstash-indexer-conf:
+logstash-json-indexer-conf:
   image: instoredigital/rancher-logstash-conf:1.0.0
 

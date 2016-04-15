@@ -19,7 +19,7 @@
      label: "Host labels"
      required: true
      type: "string"
-     default: "instore.digital.kafka.enable=true"
+     default: "instore.digital.topbeat.enable=true"
 
 topbeat:
   metadata:
