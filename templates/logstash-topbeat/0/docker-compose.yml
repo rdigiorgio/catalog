@@ -1,5 +1,6 @@
 logstash-topbeat-collector:
   image: logstash:1.5.3-1
+  entrypoint: /opt/scripts/run.sh
   command: -f /etc/logstash
   volumes_from:
    - logstash-topbeat-collector-conf

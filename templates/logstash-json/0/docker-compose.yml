@@ -1,5 +1,6 @@
 logstash-json-collector:
   image: logstash:1.5.3-1
+  entrypoint: /opt/scripts/run.sh
   command: -f /etc/logstash
   volumes_from:
    - logstash-json-collector-conf
