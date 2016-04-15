@@ -44,7 +44,7 @@
      type: "string"
      default: "instore.digital.logstash.indexer.enable=true"
 
-logstash-beats-collector:
+logstash-topbeat-collector:
   metadata:
     logstash:
       inputs: |
@@ -58,10 +58,10 @@ logstash-beats-collector:
           host => "redis"
           port => "6379"
           data_type => "list"
-          key => "topbeat"
+          key => "${REDIS_KEY}"
         }
 
-logstash-beats-indexer:
+logstash-topbeat-indexer:
   metadata:
     logstash:
       inputs: |
@@ -69,7 +69,7 @@ logstash-beats-indexer:
           host => "redis"
           port => "6379"
           data_type => "list"
-          key => "topbeat"
+          key => "${REDIS_KEY}"
         }
       filters: |
 
