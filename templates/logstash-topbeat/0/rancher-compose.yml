@@ -24,7 +24,7 @@
      label: "Redis key"
      required: true
      type: "string"
-     default: "logstash"
+     default: "logstash-topbeat"
    - variable: "RUN_ARGUMENTS"
      description: "Run arguments passed to logstash binary"
      label: "Command"
