@@ -1,0 +1,10 @@
+jobber:
+  image: instoredigital/jobber
+  labels:
+    io.rancher.sidekicks: jobber-conf
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+  volumes_from:
+   - jobber-conf
+
+jobber-conf:
+  image: instoredigital/rancher-jobber-conf

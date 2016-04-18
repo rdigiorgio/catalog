@@ -1,0 +1,46 @@
+.catalog:
+  name: "Jobber"
+  version: "1.0.3-rancher0"
+  description: "A replacement for cron, with sophisticated status-reporting and error-handling"
+  questions:
+   - variable: "JOB_NAME"
+     description: "Job to execute name"
+     label: "Name"
+     required: true
+     type: "string"
+     default: "job"
+   - variable: "JOB_TIME"
+     description: "Job cron schedule time"
+     label: "Time"
+     required: true
+     type: "string"
+     default: "* * * * * *"
+   - variable: "JOB_CMD"
+     description: "Job command to execute"
+     label: "Command"
+     required: true
+     type: "string"
+     default: "echo 'Hello World!'"
+   - variable: "JOB_ON_ERROR"
+     description: "Job on error scheduling"
+     label: "On error"
+     required: true
+     type: "enum"
+     default: "Continue"
+     options:
+      - Stop
+      - Backoff
+      - Continue
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.jobber.enable=true"
+
+kafka:
+  metadata:
+    job.name: ${JOB_NAME}
+    job.cmd: ${JOB_CMD}
+    job.time: ${JOB_TIME}
+    job.on.error: ${JOB_ON_ERROR}

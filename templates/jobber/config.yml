@@ -1,0 +1,5 @@
+name: Jobber
+description: |
+  A replacement for cron, with sophisticated status-reporting and error-handling
+version: 1.0.3-rancher0
+category: Scheduling
