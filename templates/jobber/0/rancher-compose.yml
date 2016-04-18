@@ -38,7 +38,7 @@
      type: "string"
      default: "instore.digital.jobber.enable=true"
 
-kafka:
+jobber:
   metadata:
     job.name: ${JOB_NAME}
     job.cmd: ${JOB_CMD}
