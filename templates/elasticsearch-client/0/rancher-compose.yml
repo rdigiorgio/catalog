@@ -5,7 +5,7 @@
   questions:
    - variable: "CLUSTER_NAME"
      description: "Elasticsearch cluster name"
-     label: "Cluser name"
+     label: "Cluster name"
      required: true
      type: "string"
      default: "elasticsearch"
