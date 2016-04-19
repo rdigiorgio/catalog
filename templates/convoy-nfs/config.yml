@@ -1,0 +1,5 @@
+name: Convoy NFS
+description: |
+  Docker Volume Manager for NFS-backed Volumes
+version: 0.3.0-rancher0
+category: File sharing
