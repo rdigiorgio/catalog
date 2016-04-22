@@ -24,6 +24,7 @@
      options:
       - AUTO
       - HOST_NAME
+     default: HOST_NAME
    - variable: "PLUGINS"
      description: Plugins to install at startup
      label: "Plugins"
