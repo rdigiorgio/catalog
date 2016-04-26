@@ -2,7 +2,7 @@ registry-proxy:
   image: nginx:1.9
   command: nginx -c /opt/nginx/nginx.conf
   ports:
-    ${LISTEN_PORT}:443
+    - ${LISTEN_PORT}:443
   links:
     - registry:registry
   volumes_from:
