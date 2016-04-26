@@ -6,7 +6,6 @@ registry-proxy:
   links:
     - registry
   volumes_from:
-    - registry-proxy-conf
     - registry-proxy-data
   labels:
     io.rancher.scheduler.global: 'true'
