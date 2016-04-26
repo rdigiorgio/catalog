@@ -3,6 +3,30 @@
   version: "2.4.0-rancher0"
   description: "A stateless, highly scalable server side application that stores and lets you distribute Docker images"
   questions:
+   - variable: "CERTIFICATE_CRT_FILE"
+     description: "File should be located in DATA_DIRECTORY/auth (ex: /mnt/share/docker-registry/auth/my.domain.crt)"
+     label: "Certificate CRT file name"
+     required: true
+     type: "string"
+     default: "my.domain.crt"
+   - variable: "CERTIFICATE_KEY_FILE"
+     description: "File should be located in DATA_DIRECTORY/auth (ex: /mnt/share/docker-registry/auth/my.domain.key)"
+     label: "Certificate KEY file name"
+     required: true
+     type: "string"
+     default: "my.domain.key"
+   - variable: "HTPASSWD_FILE"
+     description: "File should be located in DATA_DIRECTORY/auth (ex: /mnt/share/docker-registry/auth/htpasswd)"
+     label: "Htpasswd file name"
+     required: true
+     type: "string"
+     default: "htpasswd"
+   - variable: "LISTEN_PORT"
+     description: "The SSL port to bind the registry proxy to on host"
+     label: "Port"
+     required: true
+     type: "int"
+     default: "443"
    - variable: "DATA_DIRECTORY"
      description: "Registry persistent data directory"
      label: "Data directory"
@@ -15,15 +39,16 @@
      required: true
      type: "string"
      default: "docker-registry"
-   - variable: "REGISTRY_INCLUDE_LABELS"
-     description: "Registry host matching labels scheduling rule"
-     label: "Registry host labels"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
      required: true
      type: "string"
      default: "instore.digital.docker.repository.registry.enable=true"
-   - variable: "PROXY_INCLUDE_LABELS"
-     description: "Proxy host matching labels scheduling rule"
-     label: "Proxy host labels"
-     required: true
-     type: "string"
-     default: "instore.digital.docker.repository.proxy.enable=true"
+
+registry-proxy:
+  metadata:
+    port: "${LISTEN_PORT}"
+    certificate.crt.path: "${DATA_DIRECTORY}/auth/${CERTIFICATE_CRT_FILE}"
+    certificate.key.path: "${DATA_DIRECTORY}/auth/${CERTIFICATE_KEY_FILE}"
+    htpasswd.path: "${DATA_DIRECTORY}/auth/${HTPASSWD_FILE}"
