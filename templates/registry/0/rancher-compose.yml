@@ -27,18 +27,24 @@
      required: true
      type: "int"
      default: "443"
-   - variable: "DATA_DIRECTORY"
-     description: "Registry persistent data directory"
-     label: "Data directory"
-     required: true
-     type: "string"
-     default: "/mnt/share/docker-registry"
    - variable: "STORAGE_POOL"
-     description: "Registry persistent data storage pool"
+     description: "Registry persistent data storage pool to use"
      label: "Storage pool"
      required: true
      type: "string"
-     default: "docker-registry"
+     default: "convoy-nfs"
+   - variable: "PROXY_SHARED_VOLUME"
+     description: "Storage pool volume to use for proxy data (read only)"
+     label: "Proxy shared volume"
+     required: true
+     type: "string"
+     default: "docker-registry-auth"
+   - variable: "REGISTRY_SHARED_VOLUME"
+     description: "Storage pool volume to use for registry persistent data"
+     label: "Registry shared volume"
+     required: true
+     type: "string"
+     default: "docker-registry-data"
    - variable: "PROXY_INCLUDE_LABELS"
      description: "Proxy host matching labels scheduling rule"
      label: "Proxy host labels"
@@ -55,6 +61,6 @@
 registry-proxy:
   metadata:
     port: "${LISTEN_PORT}"
-    certificate.crt.path: "${DATA_DIRECTORY}/auth/${CERTIFICATE_CRT_FILE}"
-    certificate.key.path: "${DATA_DIRECTORY}/auth/${CERTIFICATE_KEY_FILE}"
-    htpasswd.path: "${DATA_DIRECTORY}/auth/${HTPASSWD_FILE}"
+    certificate.crt.path: "/etc/nginx/access/${CERTIFICATE_CRT_FILE}"
+    certificate.key.path: "/etc/nginx/access/${CERTIFICATE_KEY_FILE}"
+    htpasswd.path: "/etc/nginx/access/${HTPASSWD_FILE}"

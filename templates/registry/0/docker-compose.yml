@@ -20,7 +20,7 @@ registry-proxy-data:
   image: nginx:1.9
   entrypoint: /bin/true
   volumes:
-    - ${DATA_DIRECTORY}/auth:/etc/nginx/access:ro
+    - ${PROXY_SHARED_VOLUME}:/etc/nginx/access:ro
   volume_driver: ${STORAGE_POOL}
   labels:
     io.rancher.container.start_once: 'true'
@@ -41,7 +41,7 @@ registry-data:
   image: registry:2.4.0
   entrypoint: /bin/true
   volumes:
-   - ${DATA_DIRECTORY}/registry:/var/lib/registry
+   - ${REGISTRY_SHARED_VOLUME}:/var/lib/registry
   volume_driver: ${STORAGE_POOL}
   labels:
     io.rancher.container.start_once: 'true'
