@@ -1,0 +1,5 @@
+name: Registry
+description: |
+  A stateless, highly scalable server side application that stores and lets you distribute Docker images
+version: 2.4.0-rancher0
+category: Repository

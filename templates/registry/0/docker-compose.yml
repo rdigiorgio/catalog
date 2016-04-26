@@ -1,0 +1,43 @@
+registry:
+  image: registry:2.4.0
+  environment:
+    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+  volumes_from:
+    - registry-data
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${REGISTRY_INCLUDE_LABELS}
+    io.rancher.sidekicks: registry-data
+
+registry-data:
+  image: registry:2.4.0
+  entrypoint: /bin/true
+  volumes:
+   - ${DATA_DIRECTORY}/registry:/var/lib/registry
+  volume_driver: ${STORAGE_POOL}
+  labels:
+    io.rancher.container.start_once: 'true'
+
+registry-proxy:
+  image: nginx:1.9
+  links:
+    - registry:registry
+  volumes_from:
+    - registry-proxy-conf
+    - registry-proxy-data
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${PROXY_INCLUDE_LABELS}
+    io.rancher.sidekicks: registry-proxy-conf,registry-proxy-data
+
+registry-proxy-conf:
+  image: instoredigital/rancher-regitry-proxy-conf
+
+registry-proxy-data:
+  image: nginx:1.9
+  entrypoint: /bin/true
+  volumes:
+    - ${DATA_DIRECTORY}/auth:/etc/nginx/conf.d/auth
+  volume_driver: ${STORAGE_POOL}
+  labels:
+    io.rancher.container.start_once: 'true'
