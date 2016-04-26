@@ -31,7 +31,7 @@ registry-proxy:
     io.rancher.sidekicks: registry-proxy-conf,registry-proxy-data
 
 registry-proxy-conf:
-  image: instoredigital/rancher-regitry-proxy-conf
+  image: instoredigital/rancher-registry-proxy-conf
 
 registry-proxy-data:
   image: nginx:1.9
