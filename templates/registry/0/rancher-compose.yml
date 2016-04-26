@@ -39,9 +39,15 @@
      required: true
      type: "string"
      default: "docker-registry"
-   - variable: "INCLUDE_LABELS"
-     description: "Host matching labels scheduling rule"
-     label: "Host labels"
+   - variable: "PROXY_INCLUDE_LABELS"
+     description: "Proxy host matching labels scheduling rule"
+     label: "Proxy host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.docker.repository.proxy.enable=true"
+   - variable: "REGISTRY_INCLUDE_LABELS"
+     description: "Registry host matching labels scheduling rule"
+     label: "Registry host labels"
      required: true
      type: "string"
      default: "instore.digital.docker.repository.registry.enable=true"

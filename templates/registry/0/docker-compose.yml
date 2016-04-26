@@ -10,8 +10,8 @@ registry-proxy:
     - registry-proxy-data
   labels:
     io.rancher.scheduler.global: 'true'
-    io.rancher.scheduler.affinity:host_label: ${REGISTRY_INCLUDE_LABELS}
-    io.rancher.sidekicks: registry-proxy-conf,registry-proxy-data,registry,registry-data
+    io.rancher.scheduler.affinity:host_label: ${PROXY_INCLUDE_LABELS}
+    io.rancher.sidekicks: registry-proxy-conf,registry-proxy-data
 
 registry-proxy-conf:
   image: instoredigital/rancher-registry-nginx-conf
@@ -32,6 +32,10 @@ registry:
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
   volumes_from:
     - registry-data
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${REGISTRY_INCLUDE_LABELS}
+    io.rancher.sidekicks: registry-data
 
 registry-data:
   image: registry:2.4.0
