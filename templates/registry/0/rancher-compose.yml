@@ -8,7 +8,7 @@
      label: "Data directory"
      required: true
      type: "string"
-     default: "/mnt/idos/registry"
+     default: "/mnt/share/docker-registry"
    - variable: "STORAGE_POOL"
      description: "Registry persistent data storage pool"
      label: "Storage pool"
