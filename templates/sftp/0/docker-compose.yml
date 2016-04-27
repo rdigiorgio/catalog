@@ -1,0 +1,9 @@
+sftp:
+  image: instoredigital/sftp-server:1.0.0
+  environment:
+    USER_NAME: ${USER_NAME}
+    USER_PUBLIC_KEY: ${SSH_KEYS}
+  volumes:
+   - ${DATA_DIRECTORY}:/home/sftp/share
+  labels:
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}

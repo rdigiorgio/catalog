@@ -1,0 +1,31 @@
+.catalog:
+  name: "sFTP"
+  version: "0.0.1-rancher0"
+  description: "An SSHD secured FTP server"
+  questions:
+   - variable: "USER_NAME"
+     description: "Username to use to authenticate to sFTP server"
+     label: "Username"
+     required: true
+     type: "string"
+     default: "sftp-user"
+   - variable: "SSH_KEYS"
+     description: "Authentication SSH public keys"
+     label: "SSH keys"
+     required: true
+     type: "multiline"
+     default: |
+       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDW2l1au5qrJ5xvelpaduWxBojEDKFmV0M3qzeq4hjZObMp5ZxmBwqK+JeQ5sodc9Eubh5VZwgnrjv63XBrIe9lGOO2su1q8onNbK1lLnIggJpME608XVfVLgetP9a32h7u2LjJpxq2vXBPKXcIqhHIYske23Lqaas5wY1I8AUUmXKRCGKlle8au9LT/ag2Fct3WMP5+XgQajyXUX6DjuR3F7cS8ulJzsitkKP1RF2W+7NLuVVQnjb6oBf01yEXrIHh+W685DLk1OElU7IHAGnf27+4FZx/4N7kSt13Em5OfKwYTfKxdjeIPPHpvLD++eRJuM/q8e+lFzGUEy5qDYNl user1@ubuntu
+       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDW2l1au5qrJ5xvelpaduWxBojEDKFmV0M3qzeq4hjZObMp5ZxmBwqK+JeQ5sodc9Eubh5VZwgnrjv63XBrIe9lGOO2su1q8onNbK1lLnIggJpME608XVfVLgetP9a32h7u2LjJpxq2vXBPKXcIqhHIYske23Lqaas5wY1I8AUUmXKRCGKlle8au9LT/ag2Fct3WMP5+XgQajyXUX6DjuR3F7cS8ulJzsitkKP1RF2W+7NLuVVQnjb6oBf01yEXrIHh+W685DLk1OElU7IHAGnf27+4FZx/4N7kSt13Em5OfKwYTfKxdjeIPPHpvLD++eRJuM/q8e+lFzGUEy5qDYNl user2@ubuntu
+   - variable: "DATA_DIRECTORY"
+     description: "sFTP persistent data directory"
+     label: "Data directory"
+     required: true
+     type: "string"
+     default: "/mnt/idos/sftp"
+   - variable: "INCLUDE_LABELS"
+     description: "Host matching labels scheduling rule"
+     label: "Host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.sftp.enable=true"

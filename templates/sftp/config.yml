@@ -1,0 +1,5 @@
+name: sFTP
+description: |
+  An SSHD secured FTP server
+version: 0.0.1-rancher0
+category: File sharing
