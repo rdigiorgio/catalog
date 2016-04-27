@@ -57,6 +57,12 @@
      required: true
      type: "string"
      default: "instore.digital.docker.repository.registry.enable=true"
+   - variable: "REDIS_INCLUDE_LABELS"
+     description: "Redis host matching labels scheduling rule"
+     label: "Redis host labels"
+     required: true
+     type: "string"
+     default: "instore.digital.docker.repository.redis.enable=true"
 
 registry-proxy:
   metadata:

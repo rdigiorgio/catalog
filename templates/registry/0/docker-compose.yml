@@ -30,6 +30,9 @@ registry:
   environment:
     REGISTRY_HTTP_SECRET: asecret
     REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+    REGISTRY_REDIS_ADDR: redis:6379
+  links:
+    - redis
   volumes_from:
     - registry-data
   labels:
@@ -45,3 +48,8 @@ registry-data:
   volume_driver: ${STORAGE_POOL}
   labels:
     io.rancher.container.start_once: 'true'
+
+redis:
+  image: redis:3.0.7
+  labels:
+    io.rancher.scheduler.affinity:host_label: ${REDIS_INCLUDE_LABELS}
