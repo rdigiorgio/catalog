@@ -21,6 +21,20 @@
      required: true
      type: "string"
      default: "htpasswd"
+   - variable: "HTTP_SECRET"
+     description: "A secret string shared accross registry instances"
+     label: "Shared secret"
+     required: true
+     type: "string"
+     default: "asecret"
+   - variable: "ADMIN_USER_PREFIX"
+     description: |
+        All username prefixed by the specified string are administrators, and can push images to registry.
+        Other users can only pull images.
+     label: "Administrator prefix"
+     required: true
+     type: "string"
+     default: "admin-"
    - variable: "LISTEN_PORT"
      description: "The SSL port to bind the registry proxy to on host"
      label: "Port"
@@ -70,3 +84,4 @@ registry-proxy:
     certificate.crt.path: "/etc/nginx/access/${CERTIFICATE_CRT_FILE}"
     certificate.key.path: "/etc/nginx/access/${CERTIFICATE_KEY_FILE}"
     htpasswd.path: "/etc/nginx/access/${HTPASSWD_FILE}"
+    admin.prefix: "${ADMIN_USER_PREFIX}"
