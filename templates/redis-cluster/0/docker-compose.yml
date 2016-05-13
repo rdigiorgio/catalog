@@ -1,0 +1,21 @@
+redis:
+  image: redis:3.2.0
+  command: redis-server /opt/redis/redis.conf
+  volumes_from:
+   - redis-data
+   - redis-conf
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.affinity:host_label: ${INCLUDE_LABELS}
+    io.rancher.sidekicks: redis-data,redis-conf
+
+redis-conf:
+  image: instoredigital/rancher-redis-cluster-conf:1.0.0
+
+redis-data:
+  image: redis:3.2.0
+  entrypoint: /bin/true
+  volumes:
+   - ${DATA_DIRECTORY}:/data
+  labels:
+    io.rancher.container.start_once: true
