@@ -3,6 +3,12 @@
   version: "3.2.0-rancher0"
   description: "An open source (BSD licensed), in-memory data structure store, used as database, cache and message broker"
   questions:
+   - variable: "BINDING_PORT"
+     description: "Port Redis will bind to (it will also bind to specified port + 10.000)"
+     label: "Port"
+     required: true
+     type: "int"
+     default: "7000"
    - variable: "INCLUDE_LABELS"
      description: "Host matching labels scheduling rule"
      label: "Host labels"
