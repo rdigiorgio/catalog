@@ -21,3 +21,8 @@
      required: true
      type: "string"
      default: "/mnt/idos/redis"
+
+redis:
+  metadata:
+    redis:
+      port: ${BINDING_PORT}
